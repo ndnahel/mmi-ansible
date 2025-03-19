@@ -1,0 +1,11 @@
+---
+- name: Affichage des Variables du Projet1
+  hosts: all
+  vars:
+    message2: "Je suis dans le Playbook"
+  tasks:
+  - name: "Afficher les Variables"
+    debug:
+      msg:
+      - "{{ message1 }}"
+      - "{{ message2 }}"

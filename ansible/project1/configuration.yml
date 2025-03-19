@@ -1,0 +1,16 @@
+---
+- name: Configuration des Machines
+  hosts: all
+  vars:
+    host_ip: "{{ ansible_default_ipv4['address'] }}"
+  tasks:
+  - name: "Afficher les Faits Ansible"
+    debug:
+      msg:
+        - "NOM MACHINE : {{ inventory_hostname }} "
+        - "OS: {{ ansible_distribution }} {{ ansible_distribution_release }} {{ ansible_distribution_version }}"
+        - "DATE  & HEURE: {{ ansible_date_time['date'] }} {{ ansible_date_time['time'] }}"
+        - "PYTHON VERSION : {{ ansible_python_version }}"
+        - "ADRESSE IP : {{ ansible_default_ipv4['address'] }}"
+
+    when: ip == host_ip

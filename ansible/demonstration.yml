@@ -1,0 +1,7 @@
+---
+#SERVEUR WEB DEV2
+- hosts: dev2
+  remote_user: root
+
+  roles:
+    - demonstration

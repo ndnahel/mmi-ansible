@@ -1,0 +1,21 @@
+- name: Playbook4
+  hosts: mmi22d06
+  remote_user: root
+  tasks:
+  - name: install php
+    apt:
+      name: php
+      state: latest
+      update_cache: yes
+  - name: creation d'un dossier
+    file:
+      path: /exo-ansible
+      state: directory
+      owner: root
+      group: root
+      mode: 0755
+  - name: creation d'un fichier
+    file:
+      path: /exo-ansible/mmi22d06.txt
+      state: touch
+      mode: 0600

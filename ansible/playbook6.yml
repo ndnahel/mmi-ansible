@@ -1,0 +1,29 @@
+- name: Playbook6
+  hosts: prod
+  remote_user: root
+  tasks:
+  - name: install php
+    apt:
+      name: php
+      state: latest
+      update_cache: yes
+  - name: install apache2
+    apt:
+      name: apache2
+      state: latest
+      update_cache: yes
+  - name: start apache2
+    service:
+      name: apache2
+      state: restarted
+  - name: suppression du fichier index.html par defaut d'apache2
+    file:
+      path: /var/www/html/index.html
+      state: absent
+  - name: copier le fichier index.php sur les machines
+    copy:
+      src: /etc/ansible/php/index.php
+      dest: /var/www/html/index.php
+      owner: root
+      group: www-data
+

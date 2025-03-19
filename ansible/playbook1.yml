@@ -1,0 +1,9 @@
+- name: playbook1
+  hosts: dev
+  remote_user: root
+  tasks:
+  - name: install php
+    apt:
+      name: php
+      state: latest
+      update_cache: yes

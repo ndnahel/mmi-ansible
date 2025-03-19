@@ -1,0 +1,33 @@
+---
+# tasks file for demonstration- name: playbook5
+  - name: install apache et php
+    apt:
+      name: ['apache2', 'php']
+      state: present
+      update_cache: yes
+
+  - name: copy index.php
+    copy:
+      src: index.php
+      dest: /var/www/html
+      mode: 0644
+
+  - name: supprime 000-default.conf
+    file:
+      path: /etc/apache2/sites-available/000-default.conf
+      state: absent
+
+  - name: copie 000-default.conf avec DirectoryIndex
+    copy:
+      src: 000-default.conf
+      dest: /etc/apache2/sites-available
+      mode: 0644
+    notify: Restart Apache
+
+  - name: Creation fichier my.cnf
+    template:
+      src: my.cnf.j2
+      dest: /root/.my.cnf
+      owner: root
+      group: mysql
+      mode: 0644

@@ -1,0 +1,11 @@
+- name: Playbook PIP
+  hosts: all
+  remote_user: root
+  tasks:
+  - name: install pip
+    apt:
+      name: pip
+      state: latest
+      update_cache: yes
+  - name: install PyMySQL
+    shell: pip3 install PyMySQL --break-system-packages

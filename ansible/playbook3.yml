@@ -1,0 +1,8 @@
+- name: Playbook3
+  hosts: dev1
+  remote_user: root
+  tasks:
+  - name: suppression du fichier mmi22d06
+    file:
+      path: /exo-ansible/mmi22d06.txt
+      state: absent
