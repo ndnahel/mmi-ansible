@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  ansible:
+    image: node-ansible:1.0
+    container_name: ansible
+    volumes:
+      - ./ansible:/etc/ansible
+
+  test:
+    image: node-debian:2.0
+    container_name: test
+    ports:
+      - "9980:80"
+
+  dev1:
+    image: node-debian:2.0
+    container_name: dev1
+    ports:
+      - "9981:80"
+
+  dev2:
+    image: node-debian:2.0
+    container_name: dev2
+    ports:
+      - "9982:80"
+
+  prod3:
+    image: node-debian:2.0
+    container_name: prod3
+    ports:
+      - "9983:80"
+
+  prod4:
+    image: node-debian:2.0
+    container_name: prod4
+    ports:
+      - "9984:80"
+
+  mmi22d06:
+    image: node-debian:2.0
+    container_name: mmi22d06
